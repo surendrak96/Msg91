@@ -1,26 +1,46 @@
- <?php
+<html>
+<head>
+<style>
+h1{
+    margin-top: 200px;
+    text-align: center;
+}
+
+</style>
+
+</head>
+<body>
+
+<h1>Message API's using MSG91</h1>
+
+<form action="<?php echo $_SELF ?>" method="post">
+    Message TO :<input name="to" placeholder="Enter the Reciver mobile No"/>
+    Message <input name="message" placeholder="Enter the Message"/>
+    <input type="submit" value="SEND SMS"/>
+</body>
+
+
+</html>
+
+<?php
+$to=$_POST['to'];
+$msg=$_POST['message'];
 
 // first create a demo account in msg91.com 
 
 
-
-
 $authKey = "Your authentication key";
-
-//Multiple mobiles numbers separated by comma
-$mobileNumber = "999999999";
-
 $senderId = "your sender id";
-$sender="Surender Reddy"
-$message = urlencode(" message from $sender");
-//it sends message from Surendra Reddy 
 
-//Define route 
-$route = "4";
+
+$message = urlencode("Hai this is a demo message ");
+ 
+$route = "default";
+
 //Prepare you post parameters
 $postData = array(
     'authkey' => $authKey,
-    'mobiles' => $mobileNumber,
+    'mobiles' => $to,
     'message' => $message,
     'sender' => $senderId,
     'route' => $route
@@ -54,6 +74,12 @@ $output = curl_exec($ch);
 }
 
 curl_close($ch);
+ echo '<script>';
+    echo 'alert("SMS sent Successfully");';
+      
+    echo '</script>';
+    ;
+
 
  
 ?>
