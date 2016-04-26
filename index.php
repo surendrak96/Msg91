@@ -16,7 +16,7 @@ h1{
 <form action="<?php echo $_SELF ?>" method="post">
     Message TO :<input name="to" placeholder="Enter the Reciver mobile No"/>
     Message <input name="message" placeholder="Enter the Message"/>
-    <input type="submit" value="SEND SMS"/>
+    <input type="submit" name="submit" value="SEND SMS"/>
 </body>
 
 
@@ -25,6 +25,8 @@ h1{
 <?php
 $to=$_POST['to'];
 $msg=$_POST['message'];
+
+if(isset($_POST['submit'])){
 
 // first create a demo account in msg91.com 
 
@@ -80,6 +82,6 @@ curl_close($ch);
     echo '</script>';
     ;
 
-
+}
  
 ?>
