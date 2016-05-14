@@ -24,8 +24,7 @@ h1{
 
 <?php
 $to=$_POST['to'];
-$msg=$_POST['message'];
-
+ 
 if(isset($_POST['submit'])){
 
 // first create a demo account in msg91.com 
@@ -35,7 +34,7 @@ $authKey = "Your authentication key";
 $senderId = "your sender id";
 
 
-$message = urlencode("Hai this is a demo message ");
+$message = urlencode($_POST['message']);
  
 $route = "default";
 
@@ -48,7 +47,7 @@ $postData = array(
     'route' => $route
 );
 
-//API URL
+ 
 $url="https://control.msg91.com/api/sendhttp.php";
 
 // init the resource
@@ -62,7 +61,7 @@ curl_setopt_array($ch, array(
 ));
 
 
-//Ignore SSL certificate verification
+
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
