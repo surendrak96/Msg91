@@ -13,9 +13,9 @@ h1{
 
 <h1>Message API's using MSG91</h1>
 
-<form action="<?php echo $_SELF ?>" method="post">
-    Message TO :<input name="to" placeholder="Enter the Reciver mobile No"/>
-    Message <input name="message" placeholder="Enter the Message"/>
+<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
+    Message TO :<input name="to" placeholder="Enter mobile No"/>
+    Message <input name="message" placeholder="Enter Message"/>
     <input type="submit" name="submit" value="SEND SMS"/>
 </body>
 
