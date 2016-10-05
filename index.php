@@ -1,86 +1,84 @@
+ 
 <html>
 <head>
-<style>
-h1{
-    margin-top: 200px;
-    text-align: center;
-}
-
-</style>
+    <title>Msg91 API for PHP</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
 
 </head>
 <body>
 
-<h1>Message API's using MSG91</h1>
+<div class="container">
 
-<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
-    Message TO :<input name="to" placeholder="Enter mobile No"/>
-    Message <input name="message" placeholder="Enter Message"/>
-    <input type="submit" name="submit" value="SEND SMS"/>
+
+    <div class="col-lg-offset-4 col-lg-4" id="panel">
+        <h2>Msg91 API for PHP</h2><br>
+
+        <form action="<?php echo $_SELF ?>" method="post" >
+ 
+
+            <div class="group">
+                <input type="text" required name="mobile">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Mobile No</label>
+            </div>
+
+            <div class="group">
+              <textarea class="form-control" rows="5" name="message"></textarea>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                 
+            </div>
+            <div class="group">
+                <center> <button type="submit" name="submit" class="btn-lg btn-warning">Send <span class="glyphicon glyphicon-send"></span></button></center>
+            </div>
+        </form>
+
+    </div>
+</div>
+
 </body>
-
-
 </html>
-
 <?php
-$to=$_POST['to'];
- 
-if(isset($_POST['submit'])){
+if(isset($_POST['submit']))
 
-// first create a demo account in msg91.com 
-
-
-$authKey = "Your authentication key";
-$senderId = "your sender id";
-
-
+{
+$mobileNo=$_POST['mobile'];
 $message = urlencode($_POST['message']);
- 
-$route = "default";
-
-//Prepare you post parameters
+$authKey = "110806AVor9Xzgtiba5718a73e";
+$senderId = "SUREND";
+$route = "4";
 $postData = array(
     'authkey' => $authKey,
-    'mobiles' => $to,
+    'mobiles' => $mobileNo,
     'message' => $message,
     'sender' => $senderId,
-    'route' => $route
+    'route' => $route,
+    'country'=>'0'
 );
-
- 
 $url="https://control.msg91.com/api/sendhttp.php";
-
-// init the resource
 $ch = curl_init();
-curl_setopt_array($ch, array(
+    curl_setopt_array($ch, array(
     CURLOPT_URL => $url,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_POST => true,
     CURLOPT_POSTFIELDS => $postData
-    //,CURLOPT_FOLLOWLOCATION => true
 ));
-
-
-
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-
-
-//get response
 $output = curl_exec($ch);
-
  if(curl_errno($ch))
 {
     echo 'error:' . curl_error($ch);
 }
-
 curl_close($ch);
- echo '<script>';
-    echo 'alert("SMS sent Successfully");';
-      
-    echo '</script>';
-    ;
-
+echo '<script>alert("Message sent Successfully")</script>';
 }
- 
 ?>
+
+
+
+
+
