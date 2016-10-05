@@ -47,8 +47,8 @@ if(isset($_POST['submit']))
 {
 $mobileNo=$_POST['mobile'];
 $message = urlencode($_POST['message']);
-$authKey = "110806AVor9Xzgtiba5718a73e";
-$senderId = "SUREND";
+$authKey = "XXXXXXXXXXXXX";
+$senderId = "Default";
 $route = "4";
 $postData = array(
     'authkey' => $authKey,
