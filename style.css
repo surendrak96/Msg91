@@ -8,10 +8,7 @@ h2 {
     margin-bottom: 50px;
     color: #fff;
 }
-
-
-
-/* form starting stylings ------------------------------- */
+ 
 .group {
     position: relative;
     margin-bottom: 35px;
@@ -30,8 +27,7 @@ input {
     input:focus {
         outline: none;
     }
-
-/* LABEL ======================================= */
+ 
 label {
     color: #fff;
     font-size: 18px;
@@ -44,15 +40,13 @@ label {
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
 }
-
-/* active state */
+ 
 input:focus ~ label, input:valid ~ label {
     top: -20px;
     font-size: 14px;
     color: #fff;
 }
-
-/* BOTTOM BARS ================================= */
+ 
 .bar {
     position: relative;
     display: block;
@@ -79,14 +73,11 @@ input:focus ~ label, input:valid ~ label {
         right: 50%;
     }
 
-
-
-/* active state */
+ 
 input:focus ~ .bar:before, input:focus ~ .bar:after {
     width: 50%;
 }
-
-/* HIGHLIGHTER ================================== */
+ 
 .highlight {
     position: absolute;
     height: 60%;
@@ -96,15 +87,13 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
     pointer-events: none;
     opacity: 0.5;
 }
-
-/* active state */
+ 
 input:focus ~ .highlight {
     -webkit-animation: inputHighlighter 0.3s ease;
     -moz-animation: inputHighlighter 0.3s ease;
     animation: inputHighlighter 0.3s ease;
 }
-
-/* ANIMATIONS ================ */
+ 
 @-webkit-keyframes inputHighlighter {
     from {
         background: #fff;
